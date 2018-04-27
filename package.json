@@ -1,0 +1,24 @@
+{
+  "name": "@musicoin/ux",
+  "version": "1.5.0",
+  "description": "ux module for Musicoin Desktop",
+  "repository": "git@github.com:etaletai13/musicoin-ux",
+  "author": "etaletai <13@etaletai.com>",
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "bower_components/",
+    "elements/",
+    "images/",
+    "scripts/",
+    "styles/",
+    "index.html"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "devDependencies": {
+    "bower": "1.8.4"
+  },
+  "scripts": { "postinstall": "yarn bower install" }
+}
