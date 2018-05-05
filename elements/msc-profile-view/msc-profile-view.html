@@ -2,40 +2,60 @@
   <link rel="import" type="css" href="../../styles/shared-styles.html">
   <link rel="import" type="css" href="msc-profile-view.css">
   <template>
-  <div class="tab flex-top">
-  <button class="tablinks" onclick="activeTabs(event, 'wallet')" id="defaultOpen">{{echo('profileViewHtml_Tab_Wallet')}}</button>
-  <button class="tablinks" onclick="activeTabs(event, 'pMusic')">{{echo('profileViewHtml_Tab_Play_Music')}}</button>
-  <button class="tablinks" id="mute" on-tap="muteAudio"><img src="/interface/images/icons/audio-volume.svg"></button>
-  <button class="tablinks" id="unmute" on-tap="unmuteAudio" style="display: none;"><img src="/interface/images/icons/audio-volume-muted.svg"></button>
-  <button class="tablinks" id="maximize" on-tap="maxWindow"><img src="/interface/images/icons/maximize.svg"></button>
-  <button class="tablinks" id="unmaximize" on-tap="maxWindow" style="display: none;"><img src="/interface/images/icons/unmaximize.svg"></button>
-  </div>
-    <div id="wallet" class="tabcontent">
-    <div class="flex-center title" style="margin-bottom: 70px;">
-    <img src="/interface/images/logon.svg" style="width: 210px; position: absolute; top: 30px; left: 30px;"></div>
-    <msc-main-status></msc-main-status>
-    <div class="buttons-style top-buttons">
-      <paper-button raised on-tap="createNewAccountDialog" id="new-account">{{echo('profileViewHtml_Btn_NEW_ACCOUNT')}}</paper-button>
-      <input id="fileDialog" type="file" style="display: none;">
-      <paper-button raised on-tap="importAny" id="old-wallet">{{echo('profileViewHtml_Btn_IMPORT_ACCOUNT')}}</paper-button>
-      <paper-button raised on-tap="showSendDialog" id="send-funds">{{echo('profileViewHtml_Btn_SEND_FUNDS')}}</paper-button>
+  <div id="wallet" class="tabcontent">
+    <div id="left_col" class="buttons-style">
+      <div class="flex-center title">
+        <img id="image_banner" src="/interface/images/logon.svg">
+      </div>
+      <paper-button onclick="activeTabs(event, 'wallet')" id="defaultOpen">Wallet</paper-button>
+      <paper-button class="tablinks" onclick="activeTabs(event, 'pMusic')">Play Music</paper-button>
+      <paper-button raised on-tap="createNewAccountDialog" id="new-account">Add account</paper-button>
+      <input id="fileDialog" type="file" style="display: none;" />
+      <paper-button raised on-tap="importAny" id="old-wallet">Import Account</paper-button>
+      <paper-button raised on-tap="showSendDialog" id="send-funds">Send Funds</paper-button>
+      <div id="footer_left">
+        <div id="left_footer_buttons">
+          <button class="tablinks" id="mute" on-tap="muteAudio">
+            <img src="/interface/images/icons/audio-volume.svg">
+          </button>
+          <button class="tablinks" id="unmute" on-tap="unmuteAudio" style="display: none;">
+            <img src="/interface/images/icons/audio-volume-muted.svg">
+          </button>
+          <button class="tablinks" id="maximize" on-tap="maxWindow">
+            <img src="/interface/images/icons/maximize.svg">
+          </button>
+          <button class="tablinks" id="unmaximize" on-tap="maxWindow" style="display: none;">
+            <img src="/interface/images/icons/unmaximize.svg">
+          </button>
+        </div>
+      </div>
     </div>
-
-    <div id="accounts">
-      <table>
-        <tr id="tableheader">
-          <th style="width: 50%; color:#302d38;">{{echo('profileViewHtml_Table_ACCOUNT')}}</th>
-          <th style="background-color: #fff; color:#302d38;">{{echo('profileViewHtml_Table_ACTIONS')}}</th>
-          <th style="background-color: #f0a0f7; color:#302d38;">{{echo('profileViewHtml_Table_BALANCE_IN')}}</th>
+    <div id="right_col">
+        <div id="wallet_text"><h2>Wallet</h2></div>
+        <div id="bal_in_sel">
+          <span id="bal_in_txt">Show balance in: </span>
+          <img src="/interface/images/icons/musicoin.svg" class="clickable" title={{echo('profileViewHtml_Display_Balance_In_MUSIC')}} on-tap="displayBalanceInMusic" />
+          <img src="/interface/images/icons/bitcoin.png" class="clickable" title={{echo('profileViewHtml_Display_Balance_In_BTC')}} on-tap="displayBalanceInBtc" />
+          <img src="/interface/images/icons/dollar.png" class="clickable" title={{echo('profileViewHtml_Display_Balance_In_USD')}} on-tap="displayBalanceInUsd" />
+          <img src="/interface/images/icons/mark.png" class="clickable" title={{echo('profileViewHtml_Market_Conversion_Rates')}} on-tap="marketRates" />
+        </div>
+      <div id="mid_right_col">     
+      <table class="acct border_bottom">
+        <tr>
+          <th id="tableheader_acc">Account</th>
+          <th id="tableheader_bal">Balance</th>
+          <th id="tableheader_act">Actions</th>
         </tr>
         <template is="dom-repeat" items="[[accounts]]" as="account">
           <tr id="data1">
-            <td class="account">
-              <div class="account-address">[[account.address]]</div>
-              <div class="account-music" id=[[account.address]] title="[[account.balance]]">{{echo('profileViewHtml_Balance')}}: [[account.displayBalance]] MUSIC</div>
-              <div class="account-btc" style="display: none;" title="[[account.balance]]">{{echo('profileViewHtml_Balance')}}: [[account.displayBalanceBtc]]</div>
-              <div class="account-usd" style="display: none;" title="[[account.balance]]">{{echo('profileViewHtml_Balance')}}: [[account.displayBalanceUsd]]</div>
+            <td class="td-button">
               <img src=[[account.avatar]] title=[[account.address]] class="avatar" width="48" on-tap="showAccountDetails">
+              <p class="account-address">[[account.address]]</p>
+            </td>
+            <td class="account">
+              <div class="account-music" id=[[account.address]] title="[[account.balance]]"> [[account.displayBalance]] MC</div>
+              <div class="account-btc" style="display: none;" title="[[account.balance]]"> [[account.displayBalanceBtc]]</div>
+              <div class="account-usd" style="display: none;" title="[[account.balance]]"> [[account.displayBalanceUsd]]</div>
             </td>
             <td class="td-button">
               <iron-icon icon="icons:explore" class=clickable title={{echo('profileViewHtml_Show_Account_In_Explorer')}} on-tap="showExplorerWindow" style="left: -20px;"></iron-icon>
@@ -43,20 +63,22 @@
               <iron-icon icon="icons:text-format" class=clickable title={{echo('profileViewHtml_Sign')}} on-tap="signMsg" style="left: 20px;"></iron-icon>
               <input id=fileDialogBackup-[[account.address]] type="file" nwdirectory style="display: none;">
             </td>
-            <td class="td-button" style="justify-content: center;">
-              <img src="/interface/images/icons/musicoin.svg" class="clickable" title={{echo('profileViewHtml_Display_Balance_In_MUSIC')}} style="width:24px; margin-left: 12px;" on-tap="displayBalanceInMusic">
-              <img src="/interface/images/icons/bitcoin.png" class="clickable" title={{echo('profileViewHtml_Display_Balance_In_BTC')}} style="width:24px; margin-left: 12px;" on-tap="displayBalanceInBtc">
-              <img src="/interface/images/icons/dollar.png" class="clickable" title={{echo('profileViewHtml_Display_Balance_In_USD')}}  style="width:24px; margin-left: 12px;" on-tap="displayBalanceInUsd">
-              <img src="/interface/images/icons/mark.png" class="clickable" title={{echo('profileViewHtml_Market_Conversion_Rates')}} style="width:24px; margin-left: 12px;" on-tap="marketRates">
-            </td>
           </tr>
         </template>
       </table>
+      </div>
+      <center>
+        <h2 class="more_accts">Need more accounts?</h2>
+        <paper-button raised on-tap="createNewAccountDialog" id="new-account">Add account</paper-button>
+        <input id="fileDialog" type="file" style="display: none;" />
+        <paper-button raised on-tap="importAny" id="old-wallet">Import Account</paper-button>
+        <paper-button raised on-tap="showSendDialog" id="send-funds">Send Funds</paper-button>
+      </center>
+      <div id="footer_right">
+        {{txStatus}} <msc-main-status></msc-main-status>
+      </div>
     </div>
-    <div style="padding-top: 40px;">
-    </div>
-      <div id="status">{{txStatus}}</div>
-    </div>
+  </div>
 
     <paper-dialog id="marketRatesDialog">
       <p>{{echo('profileViewHtml_Current_rates_for_1_MUSIC')}}</p>
@@ -392,7 +414,7 @@
       <div class="buttons">
         <paper-button dialog-dismiss on-tap="clearSignMsgMenu">{{echo('profileViewHtml_Btn_Cancel')}}</paper-button>
         <paper-button autofocus on-tap="signMsgActionMenu">{{echo('profileViewHtml_Btn_Sign')}}</paper-button>
-      </div>
+    </div>
     </paper-dialog>
 
     <paper-dialog modal on-iron-overlay-opened="patchOverlay" id="sendDialogFromAccount">
@@ -407,9 +429,9 @@
         <paper-button dialog-confirm autofocus on-tap="approveSendAccount">{{echo('profileViewHtml_Btn_OK')}}</paper-button>
       </div>
     </paper-dialog>
-    </div>
+  </div>
     <div id="pMusic" class="tabcontent">
-    <webview id="mPlayer" src="https://musicoin.org/login"></webview>
+      <webview id="mPlayer" src="https://musicoin.org/login"></webview>
     </div>
   </template>
   <script src="msc-profile-view.js"></script>

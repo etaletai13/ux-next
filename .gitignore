@@ -1,12 +1,10 @@
 bower_components/*
 node_modules/*
 nohup.out
-npm-debug.log
 runwatched.sh
 watcher.sh
 switchworkspace.sh
 /**/.DS_Store
 .DS_Store
 .atomignore
-yarn-error.log
-yarn.lock
+*.log
