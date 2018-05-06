@@ -6,6 +6,185 @@ h2{
   font-weight: normal;
 }
 
+#left_col, #right_col{
+  overflow: hidden;
+  padding: 5px;
+}
+
+#left_col{
+  background-color: #272a30;
+  width: 13%;
+  float: left;
+  padding-left: 25px;
+  padding-right: 20px;
+}
+
+#image_banner{
+  width: 100%;
+}
+
+#left_col button{
+  background-color: #272a30;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  padding-bottom: 15px;
+}
+
+.left_col_btn_txt{
+  font-family: 'Lato Lite', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: white;
+  padding-left: 8px;
+  position: relative;
+  bottom: 6px;
+}
+
+#right_col{
+  background-color: #2b2e34;
+  width: 78%;
+  float: right;
+  padding-left: 25px;
+}
+
+.avatar {
+  cursor: pointer;
+  float: left;
+}
+
+.account-address {
+  float: right;
+  font-size: 14px;
+  color: #b0b1b3;
+  padding-left:10px;
+}
+
+.account-bal{
+  clear: both;
+}
+
+#th_acc{
+  width: 70%;
+}
+
+#th_act{
+  width: 5%;
+}
+
+#th_bal{
+  width: 25%;
+}
+
+#th_act, .account-act, #th_bal, .account-music, .account-btc, .account-usd{
+  padding-left: 20px;
+}
+
+.account-music, .account-btc, .account-usd {
+  font-size: 14px;
+  color: #b0b1b3;
+  font-weight: bold;
+}
+
+table.border_bottom {
+  color: #5d5f63;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+table.acct th{
+  text-align: left;
+}
+
+tr.border_bottom td {
+  border-bottom:1pt solid #5d5f63;
+}
+
+#footer_left, #footer_right{
+  position: absolute;
+  bottom: 30px;
+  color: #46494e;
+  font-size: 11px;
+}
+
+#footer_right{
+  background-color: #2b2e34;
+}
+
+#wallet_text{
+  width:auto;
+  height:auto;
+  float:left;
+}
+
+#bal_in_sel{
+  padding-top:10px;
+  width:auto;
+  height:auto;
+  float:right;
+}
+
+#bal_in_sel img{
+  width:24px; 
+  margin-left: 12px;
+}
+
+#bal_in_txt{
+  color: #5d5f63;
+  font-size: 12px;
+}
+
+#mid_right_col{
+  clear: both;
+  width: inherit;
+  height: auto;
+  position: static;
+}
+
+#tableheader_acc{
+  width: 70%;
+}
+
+#tableheader_bal{
+  width: 25%;
+}
+
+#tableheader_act{
+  width: 5%;
+}
+
+#more_accounts{
+  margin-top:160px;
+  padding-bottom: 60px;
+}
+
+h2.more_accounts{
+  color: #b0b1b3; !important
+}
+
+#left_footer_buttons button {
+  background-color: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+  font-weight: 700 !important;
+}
+
+#left_footer_buttons button:hover {
+  background-color: #f2bcf7;
+}
+
+#left_footer_buttons button.active {
+  background-color: #f2c455;
+}
+
+#footer_right{
+  text-align: center;
+}
+
 .title {
   font-size: 48px;
   margin-bottom: 20px;
@@ -250,125 +429,6 @@ paper-dialog {
 
 .sync-status {
   font-weight: 900 !important;
-}
-
-#image_banner{
-  width: 100%;
-}
-
-#left_col, #right_col{
-  overflow: hidden;
-  padding: 5px;
-}
-
-#left_col{
-  background-color: #272a30;
-  width: 13%;
-  float: left;
-}
-
-#right_col{
-  background-color: #2b2e34;
-  width: 83%;
-  float: right;
-}
-
-.avatar {
-  cursor: pointer;
-  float: left;
-}
-
-.account-address {
-  float: right;
-  font-size: 14px;
-  color: #b0b1b3;
-}
-
-.account{
-  clear: both;
-}
-
-.account-music, .account-btc, .account-usd {
-  font-size: 14px;
-  color: #b0b1b3;
-  font-weight: 700;
-}
-
-.border_bottom {
-  color: #5d5f63;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-tr.border_bottom td {
-  border-bottom:1pt solid #5d5f63;
-}
-
-#footer_left, #footer_right{
-  position: absolute;
-  bottom: 30px;
-  color: #46494e;
-  font-size: 11px;
-}
-
-#wallet_text{
-  width:auto;
-  height:auto;
-  float:left;
-}
-
-#bal_in_sel{
-  padding-top:10px;
-  width:auto;
-  height:auto;
-  float:right;
-}
-
-#bal_in_sel img{
-  width:24px; 
-  margin-left: 12px;
-}
-
-#bal_in_txt{
-  color: #5d5f63;
-  font-size: 12px;
-}
-
-#mid_right_col{
-  clear: both;
-  width: inherit;
-  height: auto;
-  position: static;
-}
-
-#tableheader_acc{
-  width: 60%;
-}
-
-#tableheader_bal{
-  width: 25%;
-}
-
-#tableheader_act{
-  width: 15%;
-}
-
-#left_footer_buttons button {
-  background-color: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 18px;
-  font-weight: 700 !important;
-}
-
-#left_footer_buttons button:hover {
-  background-color: #f2bcf7;
-}
-
-#left_footer_buttons button.active {
-  background-color: #f2c455;
 }
 
 .tabcontent {

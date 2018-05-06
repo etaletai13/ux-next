@@ -7,12 +7,14 @@
       <div class="flex-center title">
         <img id="image_banner" src="/interface/images/logon.svg">
       </div>
-      <paper-button onclick="activeTabs(event, 'wallet')" id="defaultOpen">Wallet</paper-button>
-      <paper-button class="tablinks" onclick="activeTabs(event, 'pMusic')">Play Music</paper-button>
-      <paper-button raised on-tap="createNewAccountDialog" id="new-account">Add account</paper-button>
-      <input id="fileDialog" type="file" style="display: none;" />
-      <paper-button raised on-tap="importAny" id="old-wallet">Import Account</paper-button>
-      <paper-button raised on-tap="showSendDialog" id="send-funds">Send Funds</paper-button>
+      <button onclick="activeTabs(event, 'wallet')" id="defaultOpen">
+        <img src="/interface/images/icons/wallet.png" />
+        <span class="left_col_btn_txt">Wallet</span>
+      </button>
+      <button onclick="activeTabs(event, 'pMusic')">
+        <img src="/interface/images/icons/play_music.png" />
+        <span class="left_col_btn_txt">Play Music</span>
+      </button>
       <div id="footer_left">
         <div id="left_footer_buttons">
           <button class="tablinks" id="mute" on-tap="muteAudio">
@@ -42,22 +44,24 @@
       <div id="mid_right_col">     
       <table class="acct border_bottom">
         <tr>
-          <th id="tableheader_acc">Account</th>
-          <th id="tableheader_bal">Balance</th>
-          <th id="tableheader_act">Actions</th>
+          <th id="th_acc">Account</th>
+          <th id="th_bal">Balance</th>
+          <th id="th_act">Actions</th>
         </tr>
         <template is="dom-repeat" items="[[accounts]]" as="account">
-          <tr id="data1">
-            <td class="td-button">
+          <tr>
+            <td>
               <img src=[[account.avatar]] title=[[account.address]] class="avatar" width="48" on-tap="showAccountDetails">
               <p class="account-address">[[account.address]]</p>
             </td>
-            <td class="account">
+            <td class="account-bal">
               <div class="account-music" id=[[account.address]] title="[[account.balance]]"> [[account.displayBalance]] MC</div>
               <div class="account-btc" style="display: none;" title="[[account.balance]]"> [[account.displayBalanceBtc]]</div>
               <div class="account-usd" style="display: none;" title="[[account.balance]]"> [[account.displayBalanceUsd]]</div>
             </td>
-            <td class="td-button">
+            <td class="account-act">
+              
+              
               <iron-icon icon="icons:explore" class=clickable title={{echo('profileViewHtml_Show_Account_In_Explorer')}} on-tap="showExplorerWindow" style="left: -20px;"></iron-icon>
               <iron-icon icon="icons:backup" class=clickable title={{echo('profileViewHtml_Backup_Account')}} on-tap="backupAccount" style="left: 0px;"></iron-icon>
               <iron-icon icon="icons:text-format" class=clickable title={{echo('profileViewHtml_Sign')}} on-tap="signMsg" style="left: 20px;"></iron-icon>
@@ -67,6 +71,7 @@
         </template>
       </table>
       </div>
+      <div id="more_accounts">
       <center>
         <h2 class="more_accts">Need more accounts?</h2>
         <paper-button raised on-tap="createNewAccountDialog" id="new-account">Add account</paper-button>
@@ -74,6 +79,7 @@
         <paper-button raised on-tap="importAny" id="old-wallet">Import Account</paper-button>
         <paper-button raised on-tap="showSendDialog" id="send-funds">Send Funds</paper-button>
       </center>
+      </div>
       <div id="footer_right">
         {{txStatus}} <msc-main-status></msc-main-status>
       </div>
