@@ -1,22 +1,11 @@
 {
   "name": "@musicoin/ux",
-  "version": "1.5.0",
-  "description": "ux module for Musicoin Desktop",
+  "version": "2.0.0-1",
+  "description": "New generation ux module for Musicoin Desktop",
   "repository": "git@github.com:etaletai13/musicoin-ux",
   "author": "etaletai <13@etaletai.com>",
   "license": "MIT",
   "private": false,
-  "files": [
-    "bower_components/",
-    "elements/",
-    "images/",
-    "scripts/",
-    "styles/",
-    "index.html"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
   "dependencies": {
     "bower": "1.8.4"
   },
